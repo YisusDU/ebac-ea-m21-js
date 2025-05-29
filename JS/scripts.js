@@ -686,11 +686,14 @@ dateInputModal.max = formattedDate;
 
 //Función para hacer que el header cambie a position fixed al hacer scroll
 const header = document.querySelector(".header");
+const main = document.querySelector("main");
 window.addEventListener("scroll", () => {
     if (window.scrollY > 165) {
         header.classList.add("fixed");
+        main.style.marginTop = header.offsetHeight + "px";
     } else {
         header.classList.remove("fixed");
+        main.style.marginTop = "0";
     }
 });
 
