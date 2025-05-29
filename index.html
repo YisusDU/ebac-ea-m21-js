@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOUND EXPRESS</title>
+    <link rel="icon" href="./assets/IMG/hound_express_favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Spicy+Rice&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./SASS/main.css">
+    <script defer src="./JS/scripts.js"></script>
+</head>
+
+<body>
+    <header class="header" id="start">
+        <section class="header__top">
+            <a href="index.html">
+                <img class="header__logo"
+                    src="./assets/IMG/M6 - imagotipo-Hound_Express/logo-Hound_Express-bg-white.png"
+                    alt="imagotipo-Hound_Express">
+            </a>
+        </section>
+        <section class="header__bottom">
+            <nav class="header__nav">
+                <i class="header__show">
+                    <img class="header__menuButton--show" src="./assets/IMG/bars-solid.svg" alt="menu-icon">
+                    <img class="header__menuButton--hidde hidde" src="./assets/IMG/x-solid.svg" alt="menu-icon">
+                </i>
+                <div class="header__linksContainer hidde">
+                    <a class="header__link" href="index.html">Inicio</a>
+                    <a class="header__link" href="#guide__register">Registro de Guías</a>
+                    <a class="header__link" href="#general__state">Estado General</a>
+                    <a class="header__link" href="#guide__list">Lista de Guías</a>
+                    <a class="header__link" href="#">🔍 Buscar Guías</a>
+                    <a class="header__link" href="#">Historial de Guías</a>
+                    <div class="header__lineDecorative"></div>
+                </div>
+            </nav>
+        </section>
+
+    </header>
+    <main>
+        <!--Banner-->
+        <article class="banner">
+            <section class="carousel">
+                <input type="radio" name="slides" id="slide1" checked>
+                <input type="radio" name="slides" id="slide2">
+                <div class="carousel__images">
+                    <div class="carousel__element" alt="banner__primary">
+                        <img class="banner__img" src="./assets/IMG/bannerCanva-HX.png" alt="bannerCanva-HX">
+                    </div>
+                    <div class="carousel__element" alt="banner__secondary">
+                        <img class="banner__img" src="./assets/IMG/bannerUS__HX.png" alt="Banner-HX-logistics">
+                    </div>
+                </div>
+                <div class="carousel__nav">
+                    <label for="slide1">⬅️</label>
+                    <label for="slide2">➡️</label>
+                </div>
+            </section>
+        </article>
+        <!--Formulario de registro de guías-->
+        <article class="guide__register" id="guide__register">
+            <!--Formulario-->
+            <section class="guide__container">
+                <h2 class="guide__title">Registro de guías</h2>
+                <form class="guide__form" action="#">
+                    <label class="guide__form--label" for="guide__number">Número de guía:</label>
+                    <input class="guide__form--input" id="guide__number" name="guide__number" type="text"
+                        inputmode="numeric" pattern="\d{1,8}" maxlength="8" placeholder="Número de guía:"
+                        title="Añade un número de guía de máximo 8 caracteres">
+                    <span class="error-message"></span>
+
+                    <label class="guide__form--label" for="guide__origin">Origen:</label>
+                    <input class="guide__form--input" id="guide__origin" name="guide__origin" type="text"
+                        placeholder="Origen:" title="Añade la ciudad de origen">
+                    <span class="error-message"></span>
+
+                    <label class="guide__form--label" for="guide__destination">Destino:</label>
+                    <input class="guide__form--input" id="guide__destination" name="guide__destination" type="text"
+                        placeholder="Destino:" title="Añade la ciudad de destino">
+                    <span class="error-message"></span>
+
+                    <label class="guide__form--label" for="guide__recipient">Destinatario:</label>
+                    <input class="guide__form--input" id="guide__recipient" name="guide__recipient" type="text"
+                        placeholder="Destinatario:" title="Añade el nombre y apellido del destinatario">
+                    <span class="error-message"></span>
+
+                    <label class="guide__form--label" for="guide__date">Fecha de creación:</label>
+                    <input class="guide__form--input" id="guide__date" name="guide__date" type="date"
+                        placeholder="Fecha de creación:" title="Añade la fecha de creación en el formato que se indica">
+                    <span class="error-message"></span>
+
+                    <label class="guide__form--label" for="guide__hour">Hora de creación:</label>
+                    <input class="guide__form--input" id="guide__time" name="guide__hour" type="time"
+                        placeholder="Hora de creación:" title="Añade la hora de creación">
+                    <span class="error-message"></span>
+
+                    <label class="guide__form--label" for="guide__status">Estado inicial:</label>
+                    <select class="guide__form--select guide__form--input" id="guide__status" name="guide__status"
+                        title="Selecciona el estado inicial del envío">
+                        <option class="guide__form--option " value="">Estado inicial:</option>
+                        <option class="guide__form--option" value="Pendiente">Pendiente 📦</option>
+                        <option class="guide__form--option" value="En tránsito">En tránsito 🚚</option>
+                        <option class="guide__form--option" value="Entregado">Entregado ✅</option>
+                    </select>
+                    <span class="error-message"></span>
+                    <br>
+                    <button class="guide__form--submit" type="submit">Enviar</button>
+                </form>
+            </section>
+
+            <!--Animacion-->
+            <section class="guide__animation">
+                <img class="guide__svg guide__svg--left" src="./assets/IMG/paw-solid.svg" alt="paw-svg">
+                <img class="guide__svg guide__svg--right" src="./assets/IMG/paw-solid.svg" alt="paw-svg">
+                <img class="guide__svg guide__svg--left" src="./assets/IMG/paw-solid.svg" alt="paw-svg">
+                <img class="guide__svg guide__svg--right" src="./assets/IMG/paw-solid.svg" alt="paw-svg">
+                <img class="guide__svg guide__svg--left" src="./assets/IMG/paw-solid.svg" alt="paw-svg">
+            </section>
+        </article>
+        <!--Panel de estado general-->
+        <article id="general__state" class="state">
+            <section class="state__container">
+                <h2 class="state__title">Estado general</h2>
+                <hr style="width: 100%;">
+                <div class="state__element">
+                    <div class="state__group">
+                        <h2 class="state__subject">Número total de guías activas</h2>
+                        <p class="state__info totalGuidesActive">" 3 "</p>
+                    </div>
+                    <div class="state__group">
+                        <h2 class="state__subject">Guías en tránsito</h2>
+                        <p class="state__info onTransitGuides">" 1 "</p>
+                    </div>
+                    <div class="state__group">
+                        <h2 class="state__subject">Guías entregadas</h2>
+                        <p class="state__info deliveredGuides">" 1 "</p>
+                    </div>
+                </div>
+            </section>
+            <section class="state__picture">
+                <img class="state__img" src="https://www.hound-express.com/images/Animacion-beneficios-sistema-v2.gif"
+                    alt="hx__gift">
+            </section>
+        </article>
+        <!--Lista de guías-->
+        <article class="guide__list" id="guide__list">
+            <h2 class="list__title">Lista de guías</h2>
+            <section class="list__tableContainer">
+                <table class="guide__table" cellpadding="5">
+                    <thead class="table__header">
+                        <tr class="table__header--row">
+                            <th class="guide__table--header">Número de guía</th>
+                            <th class="guide__table--header">Estado actual</th>
+                            <th class="guide__table--header">Origen</th>
+                            <th class="guide__table--header">Destino</th>
+                            <th class="guide__table--header">Destinatario</th>
+                            <th class="guide__table--header">Fecha de la última actualización.</th>
+                            <th class="guide__table--header">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table__body">
+                        <!--Elementos generados dinámicamente-->
+                    </tbody>
+                </table>
+            </section>
+        </article>
+
+    </main>
+    <footer>
+        <!--Footer-->
+        <article class="footer__about">
+            <section class="footer__socialmedia">
+                <picture class="footer__picture">
+                    <a href="index.html">
+                        <img class="footer__img" src="./assets/IMG/M6 - imagotipo-Hound_Express/logoAzulBlancoHE.png"
+                            alt="imagotipo-Hound_Express">
+                    </a>
+                    <figcaption class="footer__socialIcons">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                    </figcaption>
+                </picture>
+                <p class="footer__description">Somos un equipo de expertos en logística, tecnología y comercio
+                    internacional. Te queremos ayudar a
+                    llevar tu empresa al siguiente nivel con soluciones de importación, exportación y logística nacional
+                    e internacional.</p>
+            </section>
+            <section class="footer__navContainer">
+                <h2 class="footer__title">Somos</h2>
+                <h2 class="footer__title">Hound Express</h2>
+                <nav class="footer__nav">
+                    <a class="footer__link" href="index.html">Inicio</a>
+                    <a class="footer__link" href="#guide__register">Registro de Guías</a>
+                    <a class="footer__link" href="#general__state">Estado General</a>
+                    <a class="footer__link" href="#guide__list">Lista de Guías</a>
+                    <a class="footer__link" href="#">Buscar Guías</a>
+                    <a class="footer__link" href="#">Historial de Guías</a>
+                </nav>
+            </section>
+
+        </article>
+        <article class="footer__copy">
+            <p class="footer__text">Copyright © 2025 Hound Express. Todos los derechos reservados.</p>
+            <a href="#" class="footer__text--link">Términos y condiciones</a>
+            <a href="#" class="footer__text--link">Política de privacidad</a>
+        </article>
+    </footer>
+
+    <!--Experimento con los modales-->
+    <section class="table__modal--update hiddeModal">
+        <div class="table__closeModal">
+            <img src="./assets/IMG/x-solid.svg" alt="close--modal">
+        </div>
+        <h3 class="tableModal__title">Actualizar estado del envío</h3>
+        <div class="tableModal__container">
+            <table class="table__currentGuide">
+                <thead class="table__currentGuide--header">
+                    <tr class="table__modalUptade--row">
+                        <th class="guide__table--modal">Número de guía</th>
+                        <th class="guide__table--modal">Estado actual</th>
+                        <th class="guide__table--modal">Origen</th>
+                        <th class="guide__table--modal">Destino</th>
+                        <th class="guide__table--modal">Destinatario</th>
+                        <th class="guide__table--modal">Fecha de la última actualización.</th>
+                        <th class="guide__table--modal">Hora de actualización</th>
+                    </tr>
+                </thead>
+                <tbody class="table__currentGuide--body">
+                    <!--Elementos generados dinámicamente-->
+                </tbody>
+            </table>
+        </div>
+        <form action="#" class="tableModal__form">
+            <label class="table__form--label" for="guide__newStatus">Nuevo estado:</label>
+            <select class="tableModal__form--select tableModal__input" id="guide__newStatus" name="guide__status"
+                title="Selecciona el estado actuaizado del envío">
+                <option class="tableModal__form--option option--1" value="">Nuevo estado:</option>
+                <option class="tableModal__form--option option--2" value="En tránsito">En tránsito 🚚</option>
+                <option class="tableModal__form--option option--3" value="Entregado">Entregado ✅</option>
+            </select>
+            <span class="error-message"></span>
+
+            <label class="table__form--label" for="guide__newDate">Fecha de la última actualización:</label>
+            <input class="tableModal__form--input tableModal__input" id="guide__newDate" name="guide__date" type="date"
+                placeholder="Fecha de creación:" title="Añade la fecha de creación en el formato que se indica">
+            <span class="error-message"></span>
+            <label class="table__form--label" for="guide__hour">Hora de la última actualización:</label>
+            <input class="tableModal__form--input tableModal__input" id="guide__newTime" name="guide__hour" type="time"
+                placeholder="Hora de actualización:" title="Añade la hora de la actualización">
+            <span class="error-message"></span>
+            <br>
+            <button class="tableModal__form--submit" type="submit">Actualizar</button>
+        </form>
+    </section>
+    <section class="table__modal--history hiddeModal">
+        <div class="tableHistory__closeModal">
+            <img src="./assets/IMG/x-solid.svg" alt="close--modal">
+        </div>
+        <h3 class="tableModal__title">Historial del envío</h3>
+        <div class="tableModal__container">
+            <table class="tableHistory__currentGuide">
+                <thead class="tableHistory__currentGuide--header">
+                    <tr class="tableHistory__modalUptade--row">
+                        <th class="tableHistory__table--modal">Número de guía</th>
+                        <th class="tableHistory__table--modal">Estado actual</th>
+                        <th class="tableHistory__table--modal">Origen</th>
+                        <th class="tableHistory__table--modal">Destino</th>
+                        <th class="tableHistory__table--modal">Destinatario</th>
+                        <th class="tableHistory__table--modal">Fecha de la última actualización.</th>
+                        <th class="tableHistory__table--modal">Hora de actualización</th>
+                    </tr>
+                </thead>
+                <tbody class="tableHistory__currentGuide--body">
+                    <!--Elementos generados dinámicamente-->
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+</body>
+
+</html>

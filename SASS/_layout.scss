@@ -1,0 +1,140 @@
+//Estructua principal de elementos
+* {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    min-width: 19rem;
+}
+
+//Desplazmiento lento
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+//Divisiones de la pagina
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 100%;
+}
+
+//Header
+header {
+    @include flex(column, start, center);
+    width: fit-content;
+    margin: 0 auto;
+    z-index: 6;
+    padding: 5px;
+    transition: all 1s ease-in-out;
+
+    &.fixed {
+        position: fixed;
+        background-color: #fff;
+        padding: 1rem 0;
+        width: 100dvw;
+        align-items: center;
+        box-shadow: 18px 8px 8px 7px rgb(0 0 0 / 20%);
+    }
+}
+
+//Main
+//Banner
+.banner {
+    width: 100%;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+}
+
+/*Fomrulario de Registro de guías*/
+.guide__register {
+    @include flex(row, center, center);
+    @include box(60%, 0 auto, 1.25rem);
+    background-color: $secondaryColor;
+    box-sizing: border-box;
+    color: #fff;
+    overflow: hidden;
+    @include pawsdown;
+
+}
+
+/*Estado General*/
+.state {
+    @include flex(row, center, space-evenly);
+    @include box(100%, 0 auto, 1.25rem);
+    @include color-bg;
+    box-sizing: border-box;
+}
+
+/*Lista de guías*/
+.guide__list {
+    @include box(100%, 0 auto, 1.25rem);
+    @include color-bg($primaryColor, transparent);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    // color: $primaryColor;
+    text-align: center;
+}
+
+/*Footer*/
+footer {
+    @include color-bg;
+}
+
+/*------------------Media Queries------------------*/
+/*880px*/
+@media screen and (max-width: 55rem) {
+    body {
+        font-size: 18px;
+    }
+}
+
+/*768px*/
+@media screen and (max-width: 48rem) {
+    body {
+        font-size: 18px;
+    }
+
+    header {
+        width: 100%;
+        @include flex(column, center, center);
+    }
+}
+
+/*528px*/
+@media screen and (max-width: 33rem) {
+
+    /*General State*/
+    .state {
+        @include flex(column, center, center);
+        text-align: center;
+    }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    body {
+        background-color: $darkModeBackground;
+    }
+
+    header {
+        &.fixed {
+            background-color: rgb(9 30 63 / 57%);
+        }
+    }
+
+    main {
+        .guide__list {
+            color: #fff;
+        }
+    }
+}

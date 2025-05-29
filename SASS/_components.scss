@@ -1,0 +1,874 @@
+//Componentes y elementos secundarios
+body {
+    .table__modal--update {
+        @extend %modalStyle;
+
+
+        .tableModal__form {
+            @include flex(column, stretch, center);
+            @include box(60%, 1rem auto, 1rem);
+            @include color-bg(#fff, transparent);
+            border: 2px solid $primaryColor;
+            gap: .3rem;
+
+            .table__form--label {
+                display: none;
+            }
+
+            .tableModal__input {
+                width: 95%;
+                border: none;
+                border-bottom: 0.125rem solid #fff;
+                margin: 0.625rem auto;
+                @include color-bg(#fff, $secondaryColor);
+                cursor: text;
+                font-size: clamp(0.9rem, 1.2rem, 1.4rem);
+                height: fit-content;
+
+                &::placeholder {
+                    color: #fff;
+                }
+
+                &:focus-visible {
+                    outline: none;
+                }
+
+                &.form__input--error {
+                    border-bottom: 0.125rem solid #ff0000;
+                }
+
+                &.form__input--correct {
+                    border-bottom: 0.125rem solid #77ff00;
+                }
+            }
+
+            .tableModal__input--error {
+                border-color: #ff0000;
+            }
+
+            .error-message {
+                font-size: 1rem;
+                color: red;
+                margin: 0;
+                padding: 0;
+            }
+
+            .tableModal__form--submit {
+                width: fit-content;
+                margin: 0 auto;
+                border: none;
+                padding: 0.3125rem;
+                @include color-bg;
+                font-weight: bold;
+                font-size: 1.2rem;
+                border: 2px solid $primaryColor;
+                @include hover($secondaryColor);
+                @include active;
+            }
+
+        }
+    }
+
+    .table__modal--history {
+        @extend %modalStyle;
+    }
+
+    .hiddeModal {
+        scale: 0;
+    }
+}
+
+//Header
+header {
+    &.fixed {
+        .header__top {
+            display: none;
+        }
+    }
+
+    .header__top {
+        @include shine;
+
+        .header__logo {
+            width: 15rem;
+        }
+    }
+
+    .header__bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        ;
+        width: fit-content;
+        padding-bottom: 0.625rem;
+        background-color: $primaryColor;
+
+        .header__nav {
+            @include flex(row, center, center);
+
+            .header__show {
+                display: none;
+                width: 2rem;
+                color: #fff;
+                transition: all 0.3s ease-in-out;
+                height: 36.56px;
+
+                img {
+                    @include hover(transparent);
+                    @include active;
+                    position: absolute;
+                }
+
+                .header__menuButton--show {
+                    width: 2rem;
+                    margin-left: 1rem;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                .header__menuButton--hidde {
+                    scale: 0;
+                    width: 1.6rem;
+                    margin-left: 1rem;
+                    transition: all 0.3s ease-in-out;
+                    transform: rotate(0deg);
+                }
+
+            }
+
+            .hidde {
+                & {
+                    flex-direction: row-reverse;
+                    justify-content: flex-end;
+                }
+
+                img:nth-of-type(1) {
+                    scale: 0;
+                }
+
+                img:nth-of-type(2) {
+                    scale: 1;
+                    transform: rotate(360deg);
+                    transition: all 0.5s ease-in-out;
+                }
+            }
+
+            .header__linksContainer {
+                @include flex(row, start, space-between);
+                background-color: $primaryColor;
+                width: 100%;
+                gap: 2rem;
+                transition: all 0.5s ease-in-out;
+
+                .header__link {
+                    width: 100%;
+                    height: 52px;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    justify-content: center;
+                    text-wrap: nowrap;
+                    color: white;
+                    text-decoration: none;
+                    padding: 1.25rem;
+                    font-size: clamp(0.8rem, 1rem, 1.3rem);
+                    @include active;
+                    @include hover($secondaryColor);
+
+                    &:nth-of-type(5) {
+                        background-color: $primaryColor;
+                        &:hover{
+                            color: $secondaryColor;
+                        }
+                        @include hover(transparent);
+                    }
+
+                    &:nth-of-type(6) {
+                        background-color: $secondaryColor;
+                        @include hover($primaryColor);
+                    }
+                }
+            }
+        }
+    }
+}
+
+//Main
+//Banner
+.banner {
+
+    .carousel {
+        @include flex(column, unset, space-evenly);
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .carousel__images {
+            @include flex(row, stretch, stretch);
+            width: 200%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+
+            .carousel__element {
+                @include flex(row, center, center);
+                width: 100%;
+                background-color: $secondaryColor;
+
+                .banner__img {
+                    width: 100%;
+                    height: 100%;
+                    max-height: 34.38rem;
+                    transition: opacity 0.5s ease-in-out;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    padding: 0.625rem;
+                }
+            }
+        }
+
+        .carousel__nav {
+            @include flex(row, center, space-between);
+            width: 100%;
+            min-width: 19rem;
+            position: absolute;
+            margin-top: 0.625rem;
+            height: max-content;
+
+            label {
+                cursor: pointer;
+                padding: 0.3125rem;
+                background-color: $secondaryColor;
+                margin: 0 0.3125rem;
+                border-radius: 50%;
+                z-index: 5;
+                @include hover(#8e9cb3c0);
+                @include active;
+            }
+        }
+    }
+
+    #slide1:checked~.carousel__images {
+        transform: translateX(0);
+    }
+
+    #slide1:checked~.carousel__nav label[for="slide1"] {
+        filter: grayscale(100%);
+        @include cursor-not-allowed;
+    }
+
+    #slide2:checked~.carousel__images {
+        transform: translateX(-50%);
+    }
+
+    #slide2:checked~.carousel__nav label[for="slide2"] {
+        filter: grayscale(100%);
+        @include cursor-not-allowed;
+    }
+}
+
+//Formulario de Registro de guías
+.guide__register {
+
+    /*Formulario*/
+    .guide__container {
+        @include flex(column, unset, unset);
+        width: 100%;
+        padding: 1.25rem;
+
+        .guide__form {
+            @include flex(column, unset, unset);
+            width: 100%;
+            padding: 1.25rem;
+            box-sizing: border-box;
+
+
+            .guide__form--label {
+                display: none;
+            }
+
+            .guide__form--input,
+            .guide__form--select {
+                width: 95%;
+                border: none;
+                border-bottom: 0.125rem solid #fff;
+                margin: 0.625rem auto;
+                background-color: $secondaryColor;
+                color: #fff;
+                cursor: text;
+                font-size: clamp(0.9rem, 1.2rem, 1.4rem);
+                height: fit-content;
+
+                &::placeholder {
+                    color: #fff;
+                }
+
+                &:focus-visible {
+                    outline: none;
+                }
+
+                &.form__input--error {
+                    border-bottom: 0.125rem solid #ff0000;
+                }
+
+                &.form__input--correct {
+                    border-bottom: 0.125rem solid #77ff00;
+                }
+            }
+
+            .error-message {
+                font-size: 1rem;
+                color: red;
+                margin: 0;
+                padding: 0;
+            }
+
+            .guide__form--submit {
+                width: fit-content;
+                margin: 0 auto;
+                border: none;
+                padding: 0.3125rem;
+                @include color-bg;
+                font-weight: bold;
+                font-size: 1.2rem;
+                border: 2px solid transparent;
+                @include hover(transparent);
+                @include active;
+
+                @media(hover: hover) and (pointer: fine) {
+                    &:hover {
+                        border: $primaryColor solid 2px;
+                        color: $primaryColor;
+                    }
+                }
+
+            }
+        }
+    }
+
+    //Animación de fondo
+    .guide__animation {
+        position: relative;
+        width: 40px;
+        @include flex(column, center, center);
+        top: -410px;
+        gap: 1.25rem;
+
+        .guide__svg {
+            top: 0;
+            width: 2rem;
+            position: relative;
+        }
+
+        .guide__svg--left {
+            left: -1rem;
+        }
+
+        .guide__svg--right {
+            left: 0rem;
+        }
+    }
+}
+
+//Estado General
+.state {
+    .state__container {
+        @include flex(column, unset, unset);
+        @include shine;
+        width: 50%;
+
+        .state__title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .state__element {
+            @include flex(row, center, space-evenly);
+            width: 100%;
+            padding: 1.25rem;
+            margin: 0 auto;
+            box-sizing: border-box;
+            color: #fff;
+            text-align: center;
+
+            .state__group {
+                padding: 1.25rem;
+                box-sizing: border-box;
+
+                &:nth-of-type(2) {
+                    border-left: 0.125rem solid #fff;
+                    border-right: 0.125rem solid #fff;
+                }
+
+                .state__subject {
+                    font-size: clamp(1rem, 1.5rem, 1.7rem);
+                    height: 9.38rem;
+                }
+
+                .state__info {
+                    font-size: clamp(1rem, 2rem, 4rem);
+                    font-weight: bold;
+                    margin: 0;
+                    color: $secondaryColor;
+                }
+            }
+        }
+    }
+
+    .state__picture {
+        width: 30%;
+
+        .state__img {
+            width: 80%;
+            height: auto;
+            min-width: 12rem;
+        }
+    }
+}
+
+//Lista de Guías
+.guide__list {
+    .list__tableContainer {
+        .guide__table {
+            width: 100%;
+
+            .table__header {
+                @include color-bg;
+                font-size: clamp(0.9rem, 1.2rem, 1.5rem);
+                font-weight: bold;
+                margin: 0;
+                padding: 0.625rem;
+            }
+
+            .guide__table--data {
+                border: 0.125rem solid $secondaryColor;
+            }
+
+            .list__buttonsContainer {
+                @include flex(column, center, center);
+                @include box;
+                color: $primaryColor;
+                text-align: center;
+                gap: 1.5rem;
+
+                .guide__button {
+                    @include color-bg;
+                    width: fit-content;
+                    border: none;
+                    padding: 0.3125rem;
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                    text-wrap: nowrap;
+                    @include hover($secondaryColor);
+                    @include active;
+                }
+            }
+        }
+    }
+
+    .table__modal--update {
+        @extend %modalStyle;
+
+        th,
+        td {
+            padding: clamp(1px, 2px, 5px);
+            font-size: clamp(0.8rem, 1rem, 1.3rem);
+        }
+
+        .tableModal__form {
+            @include flex(column, stretch, center);
+            @include box(60%, 1rem auto, 1rem);
+            @include color-bg(#fff, transparent);
+            border: 2px solid $primaryColor;
+            gap: .3rem;
+
+            .table__form--label {
+                display: none;
+            }
+
+            .tableModal__input {
+                width: 95%;
+                border: none;
+                border-bottom: 0.125rem solid #fff;
+                margin: 0.625rem auto;
+                @include color-bg(#fff, $secondaryColor);
+                cursor: text;
+                font-size: clamp(0.9rem, 1.2rem, 1.4rem);
+                height: fit-content;
+
+                &::placeholder {
+                    color: #fff;
+                }
+
+                &:focus-visible {
+                    outline: none;
+                }
+
+                &.form__input--error {
+                    border-bottom: 0.125rem solid #ff0000;
+                }
+
+                &.form__input--correct {
+                    border-bottom: 0.125rem solid #77ff00;
+                }
+            }
+
+            .tableModal__input--error {
+                border-color: #ff0000;
+            }
+
+            .error-message {
+                font-size: 1rem;
+                color: red;
+                margin: 0;
+                padding: 0;
+            }
+
+            .tableModal__form--submit {
+                width: fit-content;
+                margin: 0 auto;
+                border: none;
+                padding: 0.3125rem;
+                @include color-bg;
+                font-weight: bold;
+                font-size: 1.2rem;
+                border: 2px solid $primaryColor;
+                @include hover($secondaryColor);
+                @include active;
+            }
+
+        }
+    }
+
+    .table__modal--history {
+        @extend %modalStyle;
+    }
+
+    .hidde {
+        scale: 0;
+    }
+}
+
+//Footer
+footer {
+    .footer__about {
+        @include flex(row, center, center);
+        @include box(80%, 0 auto, 1.25rem);
+        color: #fff;
+        text-align: center;
+
+        .footer__socialmedia {
+            @include flex(column, center, center);
+            @include box(100%, 0 auto, 1.25rem);
+            color: #fff;
+            text-align: center;
+            gap: 1.5rem;
+
+            .footer__picture {
+                @include flex(column, center, center);
+                @include box(100%, 0 auto, 0);
+                color: #fff;
+                text-align: center;
+                gap: 1.5rem;
+                @include shine;
+
+
+                .footer__img {
+                    width: 50%;
+                    min-width: 12.5rem;
+                }
+
+                .footer__socialIcons {
+                    @include flex(row, center, space-evenly);
+                    width: 100%;
+
+                    i {
+                        @include flex(row, center, center);
+                        font-size: 2rem;
+                        cursor: pointer;
+                        width: 40px;
+                        @include active;
+
+
+                        &::before {
+                            display: block;
+                            width: 30px;
+                        }
+
+                        @media (hover: hover) and (pointer: fine) {
+                            &:hover::before {
+                                color: $secondaryColor;
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            .footer__description {
+                font-size: 1.2rem;
+                margin: 0;
+                color: #fff;
+                text-align: justify;
+            }
+        }
+
+        .footer__navContainer {
+            @include flex(column, start, center);
+            @include box(100%, 0 auto, 0);
+            color: #fff;
+            text-align: center;
+
+            .footer__title {
+                margin: 0;
+                padding: 0;
+
+                &:first-of-type {
+                    color: $secondaryColor;
+                }
+            }
+
+            .footer__nav {
+                @include flex(row, start, start);
+                @include box(100%, 0.625 auto, 0);
+                color: #fff;
+                text-align: center;
+                gap: 1.5rem;
+
+                .footer__link {
+                    display: inline-block;
+                    color: #fff;
+                    text-decoration: none;
+                    padding: 0.625rem 0;
+                    text-align: center;
+                    @include hover;
+
+                    &:hover {
+                        color: $secondaryColor;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer__copy {
+        @include flex(row, center, space-evenly);
+        @include box(100%, 0 auto, 0.625rem);
+        text-align: center;
+        @include color-bg(#fff, $secondaryColor);
+
+        .footer__text--link {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.625rem 0;
+            text-align: center;
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+/*------------------Media Queries------------------*/
+//1104px
+@media screen and (max-width: 69rem) {
+
+    //Header nav
+    header {
+        .header__bottom {
+            .header__nav {
+                .header__linksContainer {
+                    .header__link {
+                        padding: 5px 7px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*960px*/
+@media screen and (max-width: 61rem) {
+
+    //Header nav
+    header {
+        .header__bottom {
+            .header__nav {
+                .header__linksContainer {
+                    gap: 0;
+                    transition: all .5s ease-in-out;
+                }
+            }
+        }
+    }
+
+    /*Estado general*/
+    .state {
+        .state__container {
+            .state__element {
+                flex-direction: column;
+
+                .state__group {
+                    &:nth-of-type(2) {
+                        border: none;
+                        border-top: 0.125rem solid #fff;
+                        border-bottom: 0.125rem solid #fff;
+                    }
+
+                    .state__subject {
+                        height: fit-content;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//840
+@media screen and (max-width: 52.5rem) {
+
+    //Modales
+    body {
+
+        .table__modal--update,
+        .table__modal--history {
+            .tableModal__container {
+                overflow-x: scroll;
+                @include cursor-grab;
+                @include cursor-grabbing;
+            }
+        }
+    }
+
+    //Registro de guías
+    .guide__list {
+        .list__tableContainer {
+            overflow-x: scroll;
+            @include cursor-grab;
+            @include cursor-grabbing;
+        }
+    }
+}
+
+/*768px*/
+@media screen and (max-width: 48rem) {
+
+    //Header nav
+    header {
+        .header__bottom {
+            width: 100%;
+            height: 64px;
+            justify-content: flex-start;
+
+            .header__nav {
+                width: 80%;
+                flex-direction: column;
+                padding-top: 15px;
+                z-index: 6;
+                height: fit-content;
+
+                .header__show {
+                    display: flex;
+                    width: 100%;
+                    z-index: 10;
+                }
+
+                .header__linksContainer {
+                    flex-direction: column;
+                    transition: all 0.5s ease-in-out;
+                    transform: translateY(0);
+
+                    &.hidde {
+                        display: none;
+
+                        .header__link {
+                            scale: 1 0;
+                        }
+                    }
+
+
+                    .header__link {
+                        padding: 5px 7px;
+                        justify-content: flex-start;
+                        padding: 15px 25px;
+
+                        &:nth-of-type(6) {
+                            background-color: $primaryColor;
+                            @include hover($secondaryColor);
+                        }
+                    }
+
+                    .header__lineDecorative {
+                        padding: 1rem;
+                        width: 100%;
+                        background-color: $secondaryColor;
+                    }
+                }
+            }
+        }
+    }
+
+    /*footer*/
+    footer {
+
+        .footer__about,
+        .footer__copy {
+            flex-direction: column;
+        }
+
+        .footer__about {
+            .footer__navContainer {
+                .footer__nav {
+                    flex-direction: column;
+                }
+            }
+        }
+
+        .footer__copy {
+
+            .footer__text {
+                margin: 0;
+                padding: 0;
+            }
+
+            .footer__text--link {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+    }
+}
+
+/*704px*/
+@media screen and (max-width: 44rem) {
+
+    /*Registro de guías*/
+    .guide__register {
+        width: 95%;
+    }
+}
+
+/*528px*/
+@media screen and (max-width: 33rem) {
+    .state {
+        .state__picture {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
