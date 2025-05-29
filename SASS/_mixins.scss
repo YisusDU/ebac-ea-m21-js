@@ -82,6 +82,7 @@
     @include flex(column, center, space-evenly);
     @include box(80dvw, 0 auto, 1rem);
     @include color-bg(#fff, $secondaryColor);
+    transition: all .1s ease-in-out;
     position: fixed;
     top: 50%;
     left: 50%;

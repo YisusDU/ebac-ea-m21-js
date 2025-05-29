@@ -10,6 +10,7 @@
   padding: 1rem;
   color: #fff;
   background-color: #6ac6de;
+  transition: all 0.1s ease-in-out;
   position: fixed;
   top: 50%;
   left: 50%;

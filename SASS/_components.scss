@@ -3,7 +3,6 @@ body {
     .table__modal--update {
         @extend %modalStyle;
 
-
         .tableModal__form {
             @include flex(column, stretch, center);
             @include box(60%, 1rem auto, 1rem);
